@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 120vh;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Click Me</h1>
+    <button id="btn">Button</button>
+    <script>
+      function debounce(func, delay) {
+        let timeout;
+        return function () {
+          clearTimeout(timeout);
+          timeout = setTimeout(() => {
+            func();
+          }, delay);
+        };
+      }
+      const btn = document.getElementById("btn");
+      let i = 0;
+      btn.addEventListener(
+        "click",
+        debounce(() => {
+          i++;
+          console.log("button Clicked", i);
+        }, 1000)
+      );
+    </script>
+  </body>
+</html>
